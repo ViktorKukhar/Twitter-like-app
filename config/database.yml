@@ -55,10 +55,6 @@ test:
   <<: *default
   database: test_project_test
 
-  username: <%= Rails.application.credentials.dig(:postgres, :username) %>
-
-  password: <%= Rails.application.credentials.dig(:postgres, :password) %>
-
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
