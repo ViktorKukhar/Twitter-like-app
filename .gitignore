@@ -38,7 +38,7 @@
 !/app/assets/builds/.keep
 
 # Ignore .idea/ folder at all
-.idea/
+.idea
 
 # CMake
 cmake-build-*/
