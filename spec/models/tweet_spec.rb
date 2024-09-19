@@ -33,13 +33,10 @@ RSpec.describe Tweet, type: :model do
     end
 
     it 'validates length of body if present' do
-      subject.body = 'A' * 300
-      expect(subject).not_to be_valid
-      expect(subject.errors[:body]).to include('is too long (maximum is 280 characters)')
+      is_expected.to validate_length_of(:body).is_at_most(280)
     end
 
     it 'is valid when body length is within allowed range' do
-      subject.body = 'A' * 50
       expect(subject).to be_valid
     end
   end
