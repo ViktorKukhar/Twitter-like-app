@@ -1,0 +1,11 @@
+@layer components {
+    .header-nav{
+        @apply mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8;
+    }
+    .header-a{
+        @apply text-sm font-semibold leading-6 text-gray-900;
+    }
+    .header-button{
+        @apply text-sm font-semibold leading-6 text-gray-900;
+    }
+}
