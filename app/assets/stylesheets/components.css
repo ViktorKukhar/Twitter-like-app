@@ -29,4 +29,7 @@
     .header-a{
         @apply text-sm font-semibold leading-6 text-gray-900;
     }
+    .header-button{
+        @apply text-sm font-semibold leading-6 text-gray-900;
+    }
 }

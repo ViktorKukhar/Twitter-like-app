@@ -21,9 +21,9 @@
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
       <% if user_signed_in? %>
-        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "text-sm font-semibold leading-6 text-gray-900" %> <span aria-hidden="true">&rarr;</span>
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "header-button" %> <span aria-hidden="true">&rarr;</span>
       <% else %>
-        <%= link_to "Log in", new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" %> <span aria-hidden="true">&rarr;</span>
+        <%= link_to "Log in", new_user_session_path, class: "header-button" %> <span aria-hidden="true">&rarr;</span>
       <% end %>
     </div>
   </nav>
