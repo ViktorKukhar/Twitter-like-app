@@ -10,6 +10,7 @@ module.exports = {
     './app/assets/**/*.css',
     './app/assets/**/*.html',
     './app/components/**/*',
+    './app/assets/stylesheets/*.css'
   ],
   theme: {
     extend: {
