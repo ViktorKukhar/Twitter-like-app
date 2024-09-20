@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, length: { minimum: 3, maximum: 50 }, uniqueness: true
+  validates :username, presence: true,
+            length: { minimum: 3, maximum: 50 },
+            uniqueness: true,
+            format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows letters, numbers, and underscores" }
 
 end
