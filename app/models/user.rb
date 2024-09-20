@@ -11,6 +11,6 @@ class User < ApplicationRecord
   validates :username, presence: true,
             length: { minimum: 3, maximum: 50 },
             uniqueness: true,
-            format: { with: /\A[a-zA-Z0-9_]+\z/, message: "only allows letters, numbers, and underscores" }
+            format: { with: /\A[a-zA-Z0-9_]+\z/ }
 
 end
