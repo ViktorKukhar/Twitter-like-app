@@ -1,0 +1,17 @@
+<aside class="sidebar left-sidebar p-4 flex justify-end ">
+  <nav class="w-64">
+    <ul class="space-y-1">
+      <li><a href="#" class="text-3xl text-white hover:text-blue-400 block py-1"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#" class="ls-link-to"><i class="fas fa-home mr-4"></i> Home</a></li>
+      <li><a href="#" class="ls-link-to"><i class="fas fa-search mr-4"></i> Explore</a></li>
+      <li><a href="#" class="ls-link-to"><i class="far fa-bell mr-4"></i> Notifications</a></li>
+      <li><a href="#" class="ls-link-to"><i class="far fa-envelope mr-4"></i> Messages</a></li>
+      <li><a href="#" class="ls-link-to"><i class="far fa-user mr-4"></i> Profile</a></li>
+      <% if user_signed_in? %>
+        <li class="mt-4"><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "bg-red-500 ls-button-to" %></li>
+      <% else %>
+        <li class="mt-4"><%= link_to "Log in to Tweet", new_user_session_path, class: "bg-blue-500 ls-button-to" %></li>
+      <% end %>
+    </ul>
+  </nav>
+</aside>
