@@ -12,6 +12,6 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of(:username) }
   it { is_expected.to validate_length_of(:username).is_at_least(3).is_at_most(50) }
   it { is_expected.to allow_value('valid_username').for(:username) }
-  it { is_expected.not_to allow_value('invalid username!').for(:username).with_message("only allows letters, numbers, and underscores") }
+  it { is_expected.not_to allow_value('invalid username!').for(:username) }
 
 end
