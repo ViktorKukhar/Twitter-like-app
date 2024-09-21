@@ -51,6 +51,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 6.0'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -63,6 +64,4 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
-
 gem "devise", "~> 4.9"

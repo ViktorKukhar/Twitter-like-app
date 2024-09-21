@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :tweets
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  resources :public
+  root "home#index"
   get "up" => "rails/health#show", as: :rails_health_check
-  root "public#index"
+  resources :home
+  resources :tweets
 end

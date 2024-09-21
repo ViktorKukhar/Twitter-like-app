@@ -1,13 +1,12 @@
 class TweetsController < ApplicationController
-  before_action :set_tweet, only: %i[ show edit update destroy ]
-
   # GET /tweets
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.recent
   end
 
   # GET /tweets/1
   def show
+    @tweet = Tweet.find(params[:id])
   end
 
   # GET /tweets/new
@@ -17,6 +16,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets/1/edit
   def edit
+    @tweet = Tweet.find(params[:id])
   end
 
   # POST /tweets
@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.build(tweet_params)
 
     if @tweet.save
-      redirect_to public_index_path, notice: "Tweet was successfully created."
+      redirect_to home_index_path, notice: "Tweet was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,6 +32,7 @@ class TweetsController < ApplicationController
 
   # PATCH/PUT /tweets/1
   def update
+    @tweet = Tweet.find(params[:id])
     if @tweet.update(tweet_params)
       redirect_to @tweet, notice: "Tweet was successfully updated.", status: :see_other
     else
@@ -41,18 +42,18 @@ class TweetsController < ApplicationController
 
   # DELETE /tweets/1
   def destroy
-    @tweet.destroy!
-    redirect_to tweets_url, notice: "Tweet was successfully destroyed.", status: :see_other
+    @tweet = Tweet.find(params[:id])
+    if @tweet.destroy
+      redirect_to tweets_url, notice: "Tweet was successfully destroyed.", status: :see_other
+    else
+      redirect_to tweets_path, notice: "There was an issue deleting the tweet."
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tweet
-      @tweet = Tweet.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
-    def tweet_params
-      params.require(:tweet).permit(:body, :user_id, :origin_id)
-    end
+  def tweet_params
+    params.require(:tweet).permit(:body, :user_id, :origin_id)
+  end
 end

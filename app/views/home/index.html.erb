@@ -1,12 +1,8 @@
 <div class="container mx-auto flex">
-  <!-- Sidebar -->
   <%= render 'shared/left_sidebar' %>
-  <!-- Main Content -->
   <main class="main-content w-1/2 border-x border-gray-800 min-h-screen">
     <h1 class="text-xl text-center font-bold p-4 border-b border-gray-800">For you</h1>
-    <!-- Tweet Input -->
-    <%= render 'shared/tweet_input' %>
-    <!-- Tweet Feed -->
-    <%= render @tweet %>
+    <%= render 'shared/tweet_input', tweet: @new_tweet %>
+    <%= render partial: 'tweets/tweet', collection: @tweets, as: :tweet %>
   </main>
 </div>
