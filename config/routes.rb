@@ -3,6 +3,5 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   root "home#index"
-  get 'home', to: 'home#index'
   get "up" => "rails/health#show", as: :rails_health_check
 end
