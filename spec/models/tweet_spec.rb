@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Tweet, type: :model do
-  # Associations
-  it { is_expected.to belong_to(:user) }
-  it { is_expected.to have_many(:likes).dependent(:destroy) }
-  it { is_expected.to have_many(:comments).dependent(:destroy) }
-  it { is_expected.to belong_to(:origin).class_name('Tweet').optional }
+  context 'associations' do
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to belong_to(:origin).class_name('Tweet').optional }
+  end
 
-  # Validations
   context 'when the tweet is an original tweet (not a retweet)' do
     subject { build(:tweet, origin: nil) }
 
