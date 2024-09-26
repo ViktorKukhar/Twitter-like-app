@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.build(tweet_params)
 
     if @tweet.save
-      redirect_to home_index_path, notice: "Tweet was successfully created."
+      redirect_to root_path, notice: "Tweet was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -44,7 +44,7 @@ class TweetsController < ApplicationController
   def destroy
     @tweet = Tweet.find(params[:id])
     if @tweet.destroy
-      redirect_to tweets_url, notice: "Tweet was successfully destroyed.", status: :see_other
+      redirect_to root_path, notice: "Tweet was successfully destroyed.", status: :see_other
     else
       redirect_to tweets_path, notice: "There was an issue deleting the tweet."
     end
