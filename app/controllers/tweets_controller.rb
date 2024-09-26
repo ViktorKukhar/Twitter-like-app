@@ -1,25 +1,20 @@
 class TweetsController < ApplicationController
-  # GET /tweets
   def index
     @tweets = Tweet.recent
   end
 
-  # GET /tweets/1
   def show
     @tweet = Tweet.find(params[:id])
   end
 
-  # GET /tweets/new
   def new
     @tweet = Tweet.new(user: current_user)
   end
 
-  # GET /tweets/1/edit
   def edit
     @tweet = Tweet.find(params[:id])
   end
 
-  # POST /tweets
   def create
     @tweet = current_user.tweets.build(tweet_params)
 
@@ -30,9 +25,9 @@ class TweetsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tweets/1
   def update
     @tweet = Tweet.find(params[:id])
+
     if @tweet.update(tweet_params)
       redirect_to @tweet, notice: "Tweet was successfully updated.", status: :see_other
     else
@@ -40,9 +35,9 @@ class TweetsController < ApplicationController
     end
   end
 
-  # DELETE /tweets/1
   def destroy
     @tweet = Tweet.find(params[:id])
+
     if @tweet.destroy
       redirect_to root_path, notice: "Tweet was successfully destroyed.", status: :see_other
     else
@@ -52,7 +47,6 @@ class TweetsController < ApplicationController
 
   private
 
-    # Only allow a list of trusted parameters through.
   def tweet_params
     params.require(:tweet).permit(:body, :user_id, :origin_id)
   end

@@ -1,23 +1,29 @@
 @layer components {
-  .tweet-submit{
+  .tweet-submit {
     @apply bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 font-bold text-sm;
   }
-  .tweet-textarea{
+
+  .tweet-textarea {
     @apply w-full border-white text-xl p-2 focus:outline-none;
   }
-  .tweet-link{
+
+  .tweet-link {
     @apply hover:text-blue-400 flex items-center text-xs;
   }
-  .tweet-button-div{
+
+  .tweet-button-div {
     @apply flex justify-between mt-2 text-gray-500 max-w-md;
   }
-  .tweet-button{
+
+  .tweet-button {
     @apply mt-2 rounded-lg py-3 px-5 bg-blue-300 inline-block font-medium;
   }
-  .main-div{
+
+  .main-div {
     @apply mx-auto md:w-2/3 w-full;
   }
-  .tweet-notice{
+
+  .tweet-notice {
     @apply py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block;
   }
 }
