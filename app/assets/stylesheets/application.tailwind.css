@@ -3,3 +3,5 @@
 @import "tailwindcss/utilities";
 
 @import "components/authentication.css";
+@import "components/tweet.css";
+

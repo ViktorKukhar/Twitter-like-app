@@ -1,0 +1,14 @@
+<% flash.each do |type, message| %>
+  <% if message.present? %>
+    <% bg_color, border_color, text_color = case type
+                                            when 'notice' then ['bg-green-100', 'border-green-500', 'text-green-700']
+                                            when 'alert' then ['bg-red-100', 'border-red-500', 'text-red-700']
+                                            else ['bg-gray-100', 'border-gray-500', 'text-gray-700']
+                                            end %>
+
+    <div class="<%= bg_color %> border-l-4 <%= border_color %> <%= text_color %> p-4 text-center" role="alert">
+      <p class="font-bold"><%= type.capitalize %></p>
+      <p><%= message %></p>
+    </div>
+  <% end %>
+<% end %>

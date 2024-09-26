@@ -7,6 +7,7 @@ class Tweet < ApplicationRecord
   validates :body, presence: true, length: { minimum: 1, maximum: 280 }, unless: :retweet?
   validates :body, length: { minimum: 1, maximum: 280 }, allow_blank: true
 
+  scope :recent, -> { order(created_at: :desc) }
   def retweet?
     origin_id.present?
   end
