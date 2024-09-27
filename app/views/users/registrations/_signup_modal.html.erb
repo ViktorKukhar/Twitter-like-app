@@ -46,7 +46,7 @@
         </div>
         <p class="form-div-link">
           Already have an account?
-          <%= link_to "Log in", new_user_session_path, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
+          <%= link_to "Log in", "#", data: { action: "click->modal#closeSignupModal click->modal#openLoginModal" }, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
         </p>
       </div>
     </div>

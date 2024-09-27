@@ -1,7 +1,7 @@
 <% resource ||= User.new %>
 <% resource_name ||= :user %>
 
-<div data-modal-target="loginModal" class="target hidden modal-bg">
+<div data-modal-target="loginModal" data-action="click->modal#closeModalOnBackground" class="target hidden modal-bg">
   <%= form_with model: resource, url: session_path(resource_name) do |f| %>
     <div class="form-main-div bg-gray-800 rounded-lg">
       <div class="form-logo-div">

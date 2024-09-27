@@ -34,4 +34,15 @@ export default class extends Controller {
     this.signupModalTarget.classList.add("hidden");     // Hide the signup modal
     this.signupModalTarget.classList.remove("flex");    // Remove the centering
   }
+
+  closeModalOnBackground(event) {
+    if (event.target === this.loginModalTarget) {
+      this.closeLoginModal(event);
+      this.closeSignupModal(event);
+    }
+    else if (event.target === this.signupModalTarget) {
+      this.closeLoginModal(event);
+      this.closeSignupModal(event);
+    }
+  }
 }
