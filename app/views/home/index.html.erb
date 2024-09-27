@@ -1,4 +1,10 @@
-<h1 class="text-xl text-center font-bold p-4 border-b border-gray-800">For you</h1>
+<h1 class="tweet-title">For you</h1>
 <%= render 'tweets/tweet_input', tweet: @new_tweet %>
+<% if user_signed_in? == false %>
+  <div data-controller="modal" class="flex justify-end border-b border-gray-800 p-4">
+    <%= link_to "Log in to Tweet", "#", data: { action: "click->modal#openLoginModal"}, class: "tweet-submit" %>
+      <%= render "devise/sessions/login_modal" %>
+  </div>
+<% end %>
 <%= render partial: 'tweets/tweet', collection: @tweets, as: :tweet %>
 

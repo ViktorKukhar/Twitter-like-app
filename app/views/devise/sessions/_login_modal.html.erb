@@ -1,0 +1,45 @@
+<% resource ||= User.new %>
+<% resource_name ||= :user %>
+
+<div data-modal-target="loginModal" class="target hidden modal-bg">
+  <%= form_with model: resource, url: session_path(resource_name) do |f| %>
+    <div class="form-main-div bg-gray-800 rounded-lg">
+      <div class="form-logo-div">
+        <%= image_tag "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600", class: "form-icon" %>
+        <h2 class="form-h2">Log in</h2>
+        <%= render "users/shared/error_messages", resource: resource %>
+      </div>
+
+      <div class="form-div-group">
+        <div class="space-y-6">
+          <div>
+            <%= f.label :email, "Email address", class: "form-label" %>
+            <div class="mt-2">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-field" %>
+            </div>
+          </div>
+
+          <div>
+            <%= f.label :password, "Password", class: "form-label" %>
+            <div class="mt-2 mb-4">
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-field" %>
+            </div>
+          </div>
+
+          <div>
+            <%= f.submit "Log in", class: "form-submit" %>
+          </div>
+        </div>
+
+  <% end %>
+
+        <div class="form-div-link">
+          Not a member?
+          <%= link_to "Create account","#", data: { action: "click->modal#openSignupModal" }, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
+            <%= render "users/registrations/signup_modal" %>
+        </div>
+
+      </div>
+    </div>
+</div>
+
