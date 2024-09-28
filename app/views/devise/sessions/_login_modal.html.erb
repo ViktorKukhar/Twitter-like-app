@@ -33,13 +33,12 @@
 
   <% end %>
 
-        <div class="form-div-link">
-          Not a member?
-          <%= link_to "Create account","#", data: { action: "click->modal#openSignupModal" }, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
-            <%= render "users/registrations/signup_modal" %>
-        </div>
+  <div class="form-div-link">
+    Not a member?
+    <%= link_to "Create account","#", data: { action: "click->modal#openSignupModal" }, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
+    <%= render "users/registrations/signup_modal" %>
+  </div>
 
-      </div>
-    </div>
+  </div>
+  </div>
 </div>
-
