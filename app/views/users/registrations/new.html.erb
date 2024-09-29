@@ -1,0 +1,49 @@
+<%= form_with model: resource, url: registration_path(resource_name) do |f| %>
+  <div class="form-main-div">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+      <%= image_tag "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600", class: "form-icon" %>
+      <h2 class="form-h2">Create account</h2>
+      <%= render "users/shared/error_messages", resource: resource %>
+    </div>
+
+    <div class="form-div-group">
+      <div class="space-y-6">
+        <div>
+          <%= f.label :email, "Email address", class: "form-label" %>
+          <div class="mt-2">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-field" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :username, "Username", class: "form-label" %>
+          <div class="mt-2">
+            <%= f.text_field :username, class: "form-field" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :password, "Password", class: "form-label" %>
+          <div class="mt-2">
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-field" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :password_confirmation, "Password confirmation", class: "form-label" %>
+          <div class="mt-2 mb-4">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-field" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.submit "Sign up", class: "form-submit" %>
+        </div>
+      </div>
+      <p class="form-div-link">
+        Already have an account?
+        <%= link_to "Log in", new_user_session_path, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
+      </p>
+    </div>
+  </div>
+<% end %>
