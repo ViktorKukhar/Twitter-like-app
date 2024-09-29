@@ -3,7 +3,7 @@
 <% if user_signed_in? == false %>
   <div data-controller="modal" class="flex justify-end border-b border-gray-800 p-4">
     <%= link_to "Log in to Tweet", "#", data: { action: "click->modal#openLoginModal"}, class: "tweet-submit" %>
-      <%= render "devise/sessions/login_modal" %>
+      <%= render "devise/sessions/login_modal", resource: User.new, resource_name: :user %>
   </div>
 <% end %>
 <%= render partial: 'tweets/tweet', collection: @tweets, as: :tweet %>

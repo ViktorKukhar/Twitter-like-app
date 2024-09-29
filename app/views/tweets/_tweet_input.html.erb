@@ -1,5 +1,5 @@
 <%= form_with(model: tweet, class: "contents") do |form| %>
-  <div class="p-4 border-gray-800">
+  <div class="p-4 tweet-border">
     <%= form.text_area :body, class: "tweet-textarea", rows: "1", placeholder: "Hello, #{ user_signed_in? ? current_user.username : "Stranger" }. What's happening?" %>
     <div class="flex justify-between items-center mt-4">
       <div class="flex space-x-4">

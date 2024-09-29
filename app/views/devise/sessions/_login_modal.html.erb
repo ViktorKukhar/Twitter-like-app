@@ -1,6 +1,3 @@
-<% resource ||= User.new %>
-<% resource_name ||= :user %>
-
 <div data-modal-target="loginModal" data-action="click->modal#closeModalOnBackground" class="target hidden modal-bg">
   <%= form_with model: resource, url: session_path(resource_name) do |f| %>
     <div class="form-main-div bg-gray-800 rounded-lg">
@@ -12,6 +9,7 @@
 
       <div class="form-div-group">
         <div class="space-y-6">
+
           <div>
             <%= f.label :email, "Email address", class: "form-label" %>
             <div class="mt-2">
@@ -29,16 +27,16 @@
           <div>
             <%= f.submit "Log in", class: "form-submit" %>
           </div>
-        </div>
 
+        </div>
   <% end %>
 
-  <div class="form-div-link">
-    Not a member?
-    <%= link_to "Create account","#", data: { action: "click->modal#openSignupModal" }, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
-    <%= render "users/registrations/signup_modal" %>
-  </div>
+          <div class="form-div-link">
+            Not a member?
+            <%= link_to "Create account","#", data: { action: "click->modal#openSignupModal" }, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
+            <%= render "users/registrations/signup_modal", resource: User.new, resource_name: :user %>
+          </div>
 
-  </div>
-  </div>
+      </div>
+    </div>
 </div>

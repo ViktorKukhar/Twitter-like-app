@@ -30,4 +30,8 @@
   .tweet-main-div {
     @apply p-4 border-b border-gray-800 hover:bg-gray-800 hover:text-gray-300;
   }
+
+  .tweet-border {
+    @apply border-gray-800 border-b;
+  }
 }
