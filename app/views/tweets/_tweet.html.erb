@@ -1,10 +1,8 @@
 <%= link_to tweet_path(tweet) do %>
-<div class="p-4 border-b border-gray-800 hover:bg-gray-800 hover:text-gray-300">
-    <div class="flex-1">
+<div class="tweet-main-div">
       <div class="flex items-center mb-1">
         <span class="text-gray-500 text-sm">@<%= tweet.user.username %> · <%= time_ago_in_words(tweet.created_at) %> </span>
       </div>
       <p class="text-base mb-2"><%= tweet.body %></p>
-    </div>
  </div>
 <% end %>

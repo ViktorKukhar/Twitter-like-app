@@ -1,22 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe "/tweets", type: :request do
-  let!(:user) { create(:user) }
-  let!(:tweet) { create(:tweet, user: user) }
+  include_context "authenticated user"
 
-  before do
-    sign_in user
-  end
+  let!(:tweet) { create(:tweet, user: user) }
 
   describe 'GET /tweets/:id' do
     it 'returns a successful response for a valid tweet' do
       get tweet_path(tweet)
-      expect(response).to have_http_status(:success)
+
+      expect(response).to be_successful
       expect(response.body).to include(tweet.body)
     end
 
     it 'returns a 404 response for an invalid tweet' do
       get tweet_path(id: 0)
+
       expect(response).to have_http_status(:not_found)
     end
   end
