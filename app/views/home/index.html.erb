@@ -1,10 +1,5 @@
 <h1 class="tweet-title">For you</h1>
 <%= render 'tweets/tweet_input', tweet: @new_tweet %>
-<% if user_signed_in? == false %>
-  <div data-controller="modal" class="flex justify-end border-b border-gray-800 p-4">
-    <%= link_to "Log in to Tweet", "#", data: { action: "click->modal#openLoginModal"}, class: "tweet-submit" %>
-      <%= render "devise/sessions/login_modal", resource: User.new, resource_name: :user %>
-  </div>
+<%= turbo_frame_tag "tweets" do %>
+  <%= render partial: 'tweets/tweet', collection: @tweets, as: :tweet %>
 <% end %>
-<%= render partial: 'tweets/tweet', collection: @tweets, as: :tweet %>
-

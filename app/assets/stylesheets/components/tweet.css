@@ -4,7 +4,7 @@
   }
 
   .tweet-textarea {
-    @apply w-full border-white text-xl p-2 focus:outline-none;
+    @apply min-h-[100px] text-xl block p-2.5 w-full text-white bg-black resize-none rounded-lg border border-gray-800 focus:ring-gray-500 focus:border-gray-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-gray-500;
   }
 
   .tweet-link {
@@ -24,11 +24,11 @@
   }
 
   .tweet-title {
-    @apply text-xl text-center font-bold p-4 border-b border-gray-800;
+    @apply sticky top-0 bg-opacity-85 text-white bg-black z-40 p-4 shadow-md text-xl text-center font-bold p-4 border-b border-gray-800;
   }
 
   .tweet-main-div {
-    @apply p-4 border-b border-gray-800 hover:bg-gray-800 hover:text-gray-300;
+    @apply p-4 border-b border-gray-800 text-white hover:bg-zinc-950;
   }
 
   .tweet-border {

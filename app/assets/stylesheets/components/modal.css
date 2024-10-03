@@ -1,9 +1,0 @@
-@layer components {
-  .target {
-    @apply fixed inset-0 items-center justify-center;
-  }
-
-  .modal-bg {
-    @apply bg-gray-800 bg-opacity-85 z-50;
-  }
-}

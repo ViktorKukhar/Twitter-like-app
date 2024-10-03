@@ -20,7 +20,11 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.build(tweet_params)
 
     if @tweet.save
-      redirect_to root_path, notice: "Tweet was successfully created."
+
+      respond_to do |format|
+        format.turbo_stream
+      end
+
     else
       render :new, status: :unprocessable_entity
     end
