@@ -1,4 +1,3 @@
-<h1 class="tweet-title">For you</h1>
 <%= render 'tweets/tweet_input', tweet: @new_tweet %>
 <%= turbo_frame_tag "tweets" do %>
   <%= render partial: 'tweets/tweet', collection: @tweets, as: :tweet %>

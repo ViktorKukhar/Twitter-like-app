@@ -1,6 +1,6 @@
 @layer components {
   .form-main-div {
-    @apply flex min-h-full flex-col border border-gray-800 rounded-lg justify-center py-12 px-6 py-12 lg:px-8 mt-8 w-2/3 mx-auto;
+    @apply flex min-h-full flex-col justify-center py-12 px-6 py-12 lg:px-8 mt-8 w-2/3 mx-auto;
   }
 
   .form-field {

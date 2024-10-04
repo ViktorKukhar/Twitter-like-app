@@ -34,4 +34,8 @@
   .tweet-border {
     @apply border-gray-800 border-b;
   }
+
+  .tweet-body {
+    @apply text-base mb-2;
+  }
 }
