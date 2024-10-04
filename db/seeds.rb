@@ -4,14 +4,16 @@ require 'factory_bot_rails'
 User.destroy_all
 Tweet.destroy_all
 
-# Create Users
+# Create users
 10.times do
   FactoryBot.create(:user)
 end
 
+# Get all created users
 users = User.all
 
-# Create Tweets
-50.times do
-  FactoryBot.create(:tweet, user: users.sample)
+# Randomly select 7 users and assign each of them a random number of tweets (between 1 and 5)
+users.sample(7).each do |user|
+  # Create a random number of tweets for each selected user
+  rand(1..5).times { FactoryBot.create(:tweet, user: user) }
 end
