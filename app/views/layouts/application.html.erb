@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TestProject</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-  <body class="bg-black text-white">
-  <main class="container mx-auto px-5">
-      <%= render "shared/flash_messages" %>
-      <div class="flex justify-center">
-        <div class="w-2/5 border-x border-gray-800 min-h-screen">
-          <%= yield %>
-        </div>
-      </div>
-
-    </main>
-  </body>
+<head>
+  <title>TestProject</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+<body class="bg-black text-white">
+<main class="container mx-auto px-5">
+  <%= render "shared/flash_messages" %>
+  <div class="flex justify-center">
+    <div class="w-2/5 border-x border-gray-800 min-h-screen">
+      <%= yield %>
+    </div>
+  </div>
+</main>
+</body>
 </html>
