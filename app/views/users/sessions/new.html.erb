@@ -2,11 +2,12 @@
   <div class="form-main-div">
 
     <div class="form-logo-div">
-      <%= inline_svg("form.svg", class: "form-icon") %>
+      <%= inline_svg("form.svg", class: "form-icon h-20") %>
       <h2 class="form-h2">Sign in to your account</h2>
-    </div>
 
-    <%= render "users/shared/error_messages", resource: resource %>
+      <%= render "users/shared/error_messages", resource: resource %>
+
+    </div>
 
     <div class="form-div-group">
       <div class="space-y-6">
