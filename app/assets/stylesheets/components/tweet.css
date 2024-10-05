@@ -38,4 +38,7 @@
   .tweet-body {
     @apply text-base mb-2;
   }
+  .tweet-char-count {
+    @apply text-sm mr-3 pr-2 text-gray-500 border-r-2 border-gray-800;
+  }
 }
