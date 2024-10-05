@@ -4,7 +4,7 @@ class Tweet < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  validates :body, presence: true, length: { minimum: 1, maximum: 280 }, unless: :retweet?
+  validates :body, presence: true, length: { minimum: 1, maximum: 2 }, unless: :retweet?
   validates :body, length: { minimum: 1, maximum: 280 }, allow_blank: true
 
   scope :recent, -> { order(created_at: :desc) }

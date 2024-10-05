@@ -1,14 +1,15 @@
-<%= form_with(model: tweet, class: "contents", data: { controller: "tweet", action: "turbo:submit-end->tweet#clearTextarea" }) do |form| %>
+<div id="flash_messages">
+  <%= render 'shared/flash_messages', tweet: @tweet %>
+</div>
+<%= form_with(model: tweet, class: "contents", data: { controller: "tweet", action: "turbo:submit-end->tweet#clearTextarea input->tweet#resize", local: false }) do |form| %>
   <div class="p-4 tweet-border">
     <%= form.text_area :body, data: { tweet_target: "textarea" }, class: "tweet-textarea", rows: "1", placeholder: "Hello, #{ user_signed_in? ? current_user.username : "Stranger" }. What's happening?" %>
     <div class="flex justify-end items-center mt-4">
-
       <% if user_signed_in? %>
         <%= form.submit "Tweet", class: "tweet-submit" %>
         <% else %>
         <%= link_to "Log in to create tweets", new_user_session_path, class: "tweet-submit" %>
       <% end %>
-
     </div>
   </div>
 <% end %>

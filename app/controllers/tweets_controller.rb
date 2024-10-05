@@ -18,15 +18,16 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = current_user.tweets.build(tweet_params)
-
     if @tweet.save
-
       respond_to do |format|
         format.turbo_stream
       end
-
     else
-      render :new, status: :unprocessable_entity
+      flash.now[:error] = @tweet.errors.full_messages.join(", ")
+      
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("flash_messages", partial: "shared/flash_messages") }
+      end
     end
   end
 

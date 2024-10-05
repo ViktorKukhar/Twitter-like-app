@@ -7,7 +7,11 @@
     @apply bg-red-100 border-red-500 text-red-700;
   }
 
+  .tweet-error {
+    @apply bg-zinc-950 border-white text-red-700;
+  }
+
   .flash-position {
-    @apply fixed top-4 left-1/2 transform -translate-x-1/2 border-l-4 p-4 text-center shadow-lg z-50;
+    @apply fixed top-4 left-1/2 transform -translate-x-1/2 border-l-4 p-4 rounded-md shadow-md z-50;
   }
 }

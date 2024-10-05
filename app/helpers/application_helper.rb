@@ -5,6 +5,8 @@ module ApplicationHelper
       'notice'
     when 'alert'
       'alert'
+    else
+      'tweet-error'
     end
   end
 end
