@@ -1,16 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "/tweets", type: :request do
-  include_context "authenticated user"
-
-  let!(:tweet) { create(:tweet, user: user) }
+  include_context :authenticated_user
+  include_context :valid_tweet
 
   describe 'GET /tweets/:id' do
     it 'returns a successful response for a valid tweet' do
       get tweet_path(tweet)
 
       expect(response).to be_successful
-
       expect(response.body).to include(tweet.body)
     end
 
@@ -25,7 +23,7 @@ RSpec.describe "/tweets", type: :request do
     context 'with valid parameters' do
       it 'creates a new tweet and renders turbo stream response' do
         expect do
-          post tweets_path, params: { tweet: { body: "New Tweet" } }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
+          post tweets_path, params: { tweet: valid_attributes }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
         end.to change(Tweet, :count).by(1)
 
         expect(response.media_type).to eq('text/vnd.turbo-stream.html')
@@ -33,9 +31,11 @@ RSpec.describe "/tweets", type: :request do
     end
 
     context 'with invalid parameters' do
+      let(:invalid_attributes) { { body: '', user_id: user.id } }
+
       it 'does not create a new tweet and renders the flash messages turbo stream' do
         expect do
-          post tweets_path, params: { tweet: { body: '' } }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
+          post tweets_path, params: { tweet: invalid_attributes }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
         end.not_to change(Tweet, :count)
 
         expect(response.media_type).to eq('text/vnd.turbo-stream.html')
@@ -48,7 +48,7 @@ RSpec.describe "/tweets", type: :request do
     it 'returns a successful response' do
       get edit_tweet_path(tweet)
 
-      expect(response).to have_http_status(:success)
+      expect(response).to be_successful
     end
   end
 

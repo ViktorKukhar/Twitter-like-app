@@ -5,9 +5,7 @@ User.destroy_all
 Tweet.destroy_all
 
 # Create users
-10.times do
-  FactoryBot.create(:user)
-end
+FactoryBot.create_list(:user, 10)
 
 # Get all created users
 users = User.all
