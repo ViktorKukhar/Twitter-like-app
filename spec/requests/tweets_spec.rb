@@ -23,22 +23,23 @@ RSpec.describe "/tweets", type: :request do
 
   describe 'POST /tweets' do
     context 'with valid parameters' do
-      it 'creates a new tweet and redirects to root path' do
+      it 'creates a new tweet and renders turbo stream response' do
         expect do
-          post tweets_path, params: { tweet: { body: "New Tweet", user_id: user.id } }
+          post tweets_path, params: { tweet: { body: "New Tweet" } }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
         end.to change(Tweet, :count).by(1)
 
-        expect(response).to redirect_to(root_path)
+        expect(response.media_type).to eq('text/vnd.turbo-stream.html')
       end
     end
 
     context 'with invalid parameters' do
-      it 'does not create a new tweet and renders new template' do
+      it 'does not create a new tweet and renders the flash messages turbo stream' do
         expect do
-          post tweets_path, params: { tweet: { body: '', user_id: user.id } }
+          post tweets_path, params: { tweet: { body: '' } }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
         end.not_to change(Tweet, :count)
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.media_type).to eq('text/vnd.turbo-stream.html')
+        expect(response.body).to include('flash_messages')
       end
     end
   end
