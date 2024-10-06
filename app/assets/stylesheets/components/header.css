@@ -1,0 +1,5 @@
+@layer components {
+  .header {
+    @apply sticky top-0 bg-opacity-85 text-white bg-black z-40 p-4 shadow-md text-xl text-center font-bold p-4 border-b border-color;
+  }
+}

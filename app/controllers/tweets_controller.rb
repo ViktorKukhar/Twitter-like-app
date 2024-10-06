@@ -13,7 +13,7 @@ class TweetsController < ApplicationController
   end
 
   def edit
-    @tweet = Tweet.find(params[:id])
+    @tweet = Tweet.all.find(params[:id])
   end
 
   def create
@@ -24,7 +24,7 @@ class TweetsController < ApplicationController
       end
     else
       flash.now[:error] = @tweet.errors.full_messages.join(", ")
-      
+
       respond_to do |format|
         format.turbo_stream { render turbo_stream: turbo_stream.replace("flash_messages", partial: "shared/flash_messages") }
       end

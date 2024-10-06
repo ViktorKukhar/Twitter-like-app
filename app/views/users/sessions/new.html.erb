@@ -1,38 +1,37 @@
 <%= form_with model: resource, url: session_path(resource_name) do |f| %>
-  <div class="form-main-div">
+  <div id="form" class="main-div">
 
-    <div class="form-logo-div">
-      <%= inline_svg("form.svg", class: "form-icon h-20") %>
-      <h2 class="form-h2">Sign in to your account</h2>
+    <div class="logo-div">
+      <h2 class="h2">Sign in to your account</h2>
 
       <%= render "users/shared/error_messages", resource: resource %>
 
     </div>
 
-    <div class="form-div-group">
+    <div class="div-group">
       <div class="space-y-6">
         <div>
-          <%= f.label :email, "Email address", class: "form-label" %>
+          <%= f.label :email, "Email address", class: "label" %>
           <div class="mt-2">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-field" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field" %>
           </div>
         </div>
 
         <div>
-          <%= f.label :password, "Password", class: "form-label" %>
+          <%= f.label :password, "Password", class: "label" %>
           <div class="mt-2 mb-4">
-            <%= f.password_field :password, autocomplete: "current-password", class: "form-field" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "field" %>
           </div>
         </div>
 
         <div>
-          <%= f.submit "Log in", class: "form-submit" %>
+          <%= f.submit "Log in", class: "submit" %>
         </div>
       </div>
 
-      <p class="form-div-link">
+      <p class="div-link">
         Not a member?
-        <%= link_to "Create account", new_user_registration_path, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
+        <%= link_to "Create account", new_user_registration_path, class: "link" %> <span aria-hidden="true">&rarr;</span>
       </p>
     </div>
   </div>

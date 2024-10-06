@@ -4,7 +4,7 @@
   }
 
   .tweet-textarea {
-    @apply min-h-[100px] text-xl block p-2.5 w-full text-white bg-black resize-none rounded-lg border border-gray-800 focus:ring-gray-500 focus:border-gray-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-gray-500;
+    @apply min-h-[100px] text-xl block p-2.5 w-full text-white bg-black resize-none rounded-lg border border-color focus:ring-gray-500 focus:border-gray-700 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-gray-500;
   }
 
   .tweet-link {
@@ -24,21 +24,21 @@
   }
 
   .tweet-title {
-    @apply sticky top-0 bg-opacity-85 text-white bg-black z-40 p-4 shadow-md text-xl text-center font-bold p-4 border-b border-gray-800;
+    @apply sticky top-0 bg-opacity-85 text-white bg-black z-40 p-4 shadow-md text-xl text-center font-bold p-4 border-b border-color;
   }
 
   .tweet-main-div {
-    @apply p-4 border-b border-gray-800 text-white hover:bg-zinc-950;
+    @apply p-4 border-b border-color text-white hover:bg-zinc-950;
   }
 
   .tweet-border {
-    @apply border-gray-800 border-b;
+    @apply border-color border-b;
   }
 
   .tweet-body {
     @apply text-base mb-2;
   }
   .tweet-char-count {
-    @apply text-sm mr-3 pr-2 text-gray-500 border-r-2 border-gray-800;
+    @apply text-sm mr-3 pr-2 text-gray-500 border-r-2 border-color;
   }
 }

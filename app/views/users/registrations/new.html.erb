@@ -1,51 +1,50 @@
 <%= form_with model: resource, url: registration_path(resource_name) do |f| %>
-  <div class="form-main-div">
+  <div id="form" class="main-div">
 
-    <div class="form-logo-div">
-      <%= inline_svg("form.svg", class: "form-icon h-20") %>
-      <h2 class="form-h2">Create account</h2>
+    <div class="logo-div">
+      <h2 class="h2">Create account</h2>
 
       <%= render "users/shared/error_messages", resource: resource %>
 
     </div>
 
-    <div class="form-div-group">
+    <div class="div-group">
       <div class="space-y-6">
         <div>
-          <%= f.label :email, "Email address", class: "form-label" %>
+          <%= f.label :email, "Email address", class: "label" %>
           <div class="mt-2">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-field" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field" %>
           </div>
         </div>
 
         <div>
-          <%= f.label :username, "Username", class: "form-label" %>
+          <%= f.label :username, "Username", class: "label" %>
           <div class="mt-2">
-            <%= f.text_field :username, class: "form-field" %>
+            <%= f.text_field :username, class: "field" %>
           </div>
         </div>
 
         <div>
-          <%= f.label :password, "Password", class: "form-label" %>
+          <%= f.label :password, "Password", class: "label" %>
           <div class="mt-2">
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-field" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "field" %>
           </div>
         </div>
 
         <div>
-          <%= f.label :password_confirmation, "Password confirmation", class: "form-label" %>
+          <%= f.label :password_confirmation, "Password confirmation", class: "label" %>
           <div class="mt-2 mb-4">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-field" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field" %>
           </div>
         </div>
 
         <div>
-          <%= f.submit "Sign up", class: "form-submit" %>
+          <%= f.submit "Sign up", class: "submit" %>
         </div>
       </div>
-      <p class="form-div-link">
+      <p class="div-link">
         Already have an account?
-        <%= link_to "Log in", new_user_session_path, class: "form-link" %> <span aria-hidden="true">&rarr;</span>
+        <%= link_to "Log in", new_user_session_path, class: "link" %> <span aria-hidden="true">&rarr;</span>
       </p>
     </div>
   </div>

@@ -1,0 +1,8 @@
+@layer components {
+  .border-color {
+    @apply border-gray-800;
+  }
+  .second-text {
+    @apply text-gray-600;
+  }
+}
