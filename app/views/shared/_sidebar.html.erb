@@ -1,10 +1,11 @@
-<aside class="mr-56 pt-3">
+<aside id="sidebar" class="sticky top-0 mr-28">
   <nav>
     <ul class="space-y-4 grid justify-items-start">
-      <li><%= inline_svg('icon.svg', class: "h-8") %></li>
-      <li><%= inline_svg('user.svg', class: "h-8") %></li>
-      <li><%= inline_svg('icon.svg', class: "h-8") %></li>
-      <li><%= inline_svg('icon.svg', class: "h-8") %></li>
+      <li class="mb-3"><%= inline_svg('icon.svg', class: "h-10") %></li>
+      <%= link_to root_path do %>
+        <li><%= inline_svg('home.svg', class: "h-10") %><p>Home</p></li>
+      <% end %>
+      <li><%= inline_svg('user.svg', class: "h-10") %><p>Profile</p></li>
     </ul>
   </nav>
 </aside>

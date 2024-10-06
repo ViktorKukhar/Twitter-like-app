@@ -1,0 +1,5 @@
+@layer components {
+  #sidebar li {
+    @apply flex items-center space-x-2 text-xl hover:bg-zinc-900 rounded-full p-2 px-4;
+  }
+}

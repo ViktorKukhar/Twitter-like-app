@@ -13,16 +13,13 @@
     <main class="container mx-auto px-5">
       <%= render "shared/flash_messages" %>
       <div class="flex justify-center">
-
-        <div class="">
+        <div class="relative min-h-screen">
           <%= render "shared/sidebar" %>
         </div>
-
         <div class="w-2/5 mr-32 border-x border-color min-h-screen">
           <%= render "shared/header" %>
           <%= yield %>
         </div>
-
       </div>
     </main>
   </body>
