@@ -65,7 +65,7 @@ RSpec.describe ApplicationHelper, type: :helper do
         result = helper.page("/users/#{user.id}/profile")
 
         expect(result).to include("<h3>#{user.username}</h3>")
-        expect(result).to include("<p>#{user.tweets.count} tweet</p>")
+        expect(result).to include("<p>#{user.tweets.count} tweets</p>")
       end
     end
 

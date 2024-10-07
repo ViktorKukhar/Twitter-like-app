@@ -23,7 +23,7 @@ module ApplicationHelper
     when users_profile_path
       safe_join([
                   content_tag(:h3, "#{@user.username}"),
-                  content_tag(:p, "#{@user.tweets.count} tweet")
+                  content_tag(:p, "#{@user.tweets.count} tweets")
                 ])
     else
       content_tag(:h2, 'Twitter')
