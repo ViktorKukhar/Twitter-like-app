@@ -1,12 +1,12 @@
 <aside id="sidebar" class="sticky top-0 mr-28">
   <nav>
-    <ul class="space-y-4 grid justify-items-start" data-controller="sidebar">
+    <ul class="space-y-4 grid justify-items-start" data-controller="dropdown">
       <li class="mb-3 main-li"><%= inline_svg('icon.svg', class: "h-10") %></li>
       <%= link_to root_path do %>
         <li class="main-li"><%= inline_svg('home.svg', class: "h-10") %><p>Home</p></li>
       <% end %>
       <% if user_signed_in? %>
-        <li class="flex items-center main-li" data-action="click->sidebar#toggle">
+        <li class="flex items-center main-li" data-action="click->dropdown#toggle">
           <%= inline_svg('user.svg', class: "h-10") %>
           <div>
             <p class="text-base">Profile</p>

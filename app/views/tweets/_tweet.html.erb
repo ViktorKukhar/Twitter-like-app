@@ -1,4 +1,4 @@
-<div id="<%= dom_id(tweet) %>" class="tweet-main-div flex items-start w-full relative" data-controller="sidebar">
+<div id="<%= dom_id(tweet) %>" class="tweet-main-div flex items-start w-full relative" data-controller="dropdown">
   <%= link_to users_profile_path(tweet.user_id), data: { turbo: false } do %>
     <div>
       <%= inline_svg('user.svg', class: "h-11") %>
@@ -13,7 +13,7 @@
         </div>
         <% if user_signed_in? && tweet.user_id == current_user.id %>
           <div class="flex items-start second-text">
-            <span data-action="click->sidebar#toggle"><%= inline_svg('horizontal_dots.svg', class: "h-5") %> </span>
+            <span data-action="click->dropdown#toggle"><%= inline_svg('horizontal_dots.svg', class: "h-5") %> </span>
             <%= render partial: 'shared/dropdown/tweet', locals: { tweet: tweet } %>
           </div>
         <% end %>
