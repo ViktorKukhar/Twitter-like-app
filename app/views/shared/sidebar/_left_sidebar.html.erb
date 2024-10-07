@@ -1,0 +1,20 @@
+<aside id="sidebar" class="sticky top-0 mr-28">
+  <nav>
+    <ul class="space-y-4 grid justify-items-start" data-controller="sidebar">
+      <li class="mb-3 main-li"><%= inline_svg('icon.svg', class: "h-10") %></li>
+      <%= link_to root_path do %>
+        <li class="main-li"><%= inline_svg('home.svg', class: "h-10") %><p>Home</p></li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="flex items-center main-li" data-action="click->sidebar#toggle">
+          <%= inline_svg('user.svg', class: "h-10") %>
+          <div>
+            <p class="text-base">Profile</p>
+            <p class="text-sm text-gray-500">@<%= current_user.username %></p>
+          </div>
+          <%= render "shared/sidebar/dropdown" %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</aside>

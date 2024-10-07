@@ -1,11 +1,11 @@
 <%= link_to tweet_path(tweet), data: { turbo: false } do %>
-  <div class="tweet-main-div flex items-center">
-    <div class="pb-3">
+  <div class="tweet-main-div flex items-start">
+    <div class="">
       <%= inline_svg('user.svg', class: "h-11") %>
     </div>
     <div class="ml-2">
       <div class="flex items-center mb-1">
-        <span class="text-gray-600 text-sm">@<%= tweet.user.username %> · <%= time_ago_in_words(tweet.created_at) %> </span>
+        <span class="text-gray-500 text-sm">@<%= tweet.user.username %> · <%= time_ago_in_words(tweet.created_at) %> </span>
       </div>
       <p class="tweet-body"><%= tweet.body %></p>
     </div>

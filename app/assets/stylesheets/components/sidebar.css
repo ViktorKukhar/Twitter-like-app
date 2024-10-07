@@ -1,5 +1,17 @@
 @layer components {
-  #sidebar li {
+  #sidebar .main-li {
     @apply flex items-center space-x-2 text-xl hover:bg-zinc-900 rounded-full p-2 px-4;
+  }
+
+  #sidebar .dropdown {
+    @apply py-2 absolute right-5 top-56 bg-black/70 text-white border border-gray-200 rounded-lg shadow-md shadow-white;
+  }
+
+  #dropdown .regular-li {
+    @apply flex items-center text-sm hover:bg-zinc-900 p-2 px-6;
+  }
+
+  #dropdown .logout {
+    @apply flex items-center text-sm hover:bg-red-900 p-2 px-6;
   }
 }

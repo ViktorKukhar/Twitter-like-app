@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["textarea", "submit", "count"]
 
   connect() {
-    this.maxLength = 50; // app/models/tweet.rb/ validates :body, length: { minimum: 1, maximum: 50 }
+    this.maxLength = 280; // app/models/tweet.rb/ validates :body, length: { minimum: 1, maximum: 280 }
     this.resize();
     this.checkLength();
   }

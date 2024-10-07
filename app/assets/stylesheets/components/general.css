@@ -1,8 +1,8 @@
 @layer components {
   .border-color {
-    @apply border-gray-800;
+    @apply border-gray-700;
   }
   .second-text {
-    @apply text-gray-600;
+    @apply text-gray-500;
   }
 }
