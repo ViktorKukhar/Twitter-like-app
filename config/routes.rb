@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "up" => "rails/health#show", as: :rails_health_check
+  namespace :users do
+    resources :profiles, only: [:show]
+  end
   resources :home
   resources :tweets
 end

@@ -2,4 +2,10 @@
   .header {
     @apply sticky top-0 bg-opacity-85 text-white bg-black z-40 p-4 shadow-md text-xl text-center font-bold p-4 border-b border-color;
   }
+  #header h3, #header p {
+    @apply text-start pl-4;
+  }
+  #header p {
+    @apply text-sm text-gray-500;
+  }
 }
