@@ -18,7 +18,7 @@ module ApplicationHelper
       content_tag(:h2, 'Log in')
     when new_user_registration_path
       content_tag(:h2, 'Sign up')
-    when tweet_path
+    when tweet_path(:id)
       content_tag(:h2, 'Tweet')
     when users_profile_path
       safe_join([
