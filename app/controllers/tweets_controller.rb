@@ -1,8 +1,5 @@
 class TweetsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  def index
-    @tweets = collection
-  end
+  before_action :authenticate_user!
 
   def show
     @tweet = resource
