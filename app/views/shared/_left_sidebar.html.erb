@@ -12,7 +12,8 @@
             <p class="text-base">Profile</p>
             <p class="text-sm text-gray-500">@<%= current_user.username %></p>
           </div>
-          <%= render "shared/sidebar/dropdown" %>
+          <%= inline_svg('dots.svg', class: "h-7") %>
+          <%= render "shared/dropdown/sidebar" %>
         </li>
       <% end %>
     </ul>

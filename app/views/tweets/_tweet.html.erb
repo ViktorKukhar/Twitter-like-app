@@ -1,16 +1,36 @@
-<div class="tweet-main-div flex items-start">
+<div id="<%= dom_id(tweet) %>" class="tweet-main-div flex items-start w-full relative" data-controller="sidebar">
   <%= link_to users_profile_path(tweet.user_id), data: { turbo: false } do %>
     <div>
       <%= inline_svg('user.svg', class: "h-11") %>
     </div>
   <% end %>
-  <%= link_to tweet_path(tweet), data: { turbo: false } do %>
-  <div class="ml-2">
-    <div class="flex items-center mb-1">
-      <span class="text-gray-500 text-sm">@<%= tweet.user.username %> · <%= time_ago_in_words(tweet.created_at) %> </span>
-    </div>
-    <p class="tweet-body"><%= tweet.body %></p>
-  </div>
-  <% end %>
-</div>
 
+  <div id="tweet" class="ml-2 flex-grow">
+
+      <div class="flex justify-between w-full">
+        <div class="flex items-center mb-1">
+          <span class="text-gray-500 text-sm">@<%= tweet.user.username %> · <%= time_ago_in_words(tweet.created_at) %> </span>
+        </div>
+        <% if user_signed_in? && tweet.user_id == current_user.id %>
+          <div class="flex items-start second-text">
+            <span data-action="click->sidebar#toggle"><%= inline_svg('horizontal_dots.svg', class: "h-5") %> </span>
+            <%= render partial: 'shared/dropdown/tweet', locals: { tweet: tweet } %>
+          </div>
+        <% end %>
+      </div>
+
+    <%= link_to tweet_path(tweet), data: { turbo: false } do %>
+      <div>
+        <p class="tweet-body"><%= tweet.body %></p>
+      </div>
+    <% end %>
+
+    <div class="second-text flex justify-between mt-4">
+      <%= inline_svg('like.svg', class: "h-5") %>
+      <%= inline_svg('comment.svg', class: "h-5") %>
+      <%= inline_svg('retweet.svg', class: "h-5") %>
+      <div class="w-30"></div>
+    </div>
+
+  </div>
+</div>

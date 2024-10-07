@@ -1,0 +1,17 @@
+<ul id="dropdown" data-sidebar-target="dropdown" class="dropdown hidden">
+
+  <%= link_to tweet_path(tweet), data: { turbo_method: :delete, turbo_stream: true, turbo_confirm: 'Are you sure?' }  do %>
+    <li class="logout rounded-t-lg flex items-start">
+      <%= inline_svg('trash.svg', class: "h-4") %>
+      <span class="ml-2">Delete</span>
+    </li>
+  <% end %>
+
+  <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+    <li class="regular-li rounded-b-lg">
+      <%= inline_svg('edit.svg', class: "h-4") %>
+      <span class="ml-2">Edit</span>
+    </li>
+  <% end %>
+
+</ul>

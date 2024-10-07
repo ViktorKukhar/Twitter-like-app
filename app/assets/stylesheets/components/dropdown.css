@@ -1,0 +1,21 @@
+@layer components {
+  #sidebar .dropdown {
+    @apply absolute right-5 top-56;
+  }
+
+  #tweet .dropdown {
+    @apply absolute top-5 right-0;
+  }
+
+  #sidebar .dropdown, #tweet .dropdown {
+    @apply bg-black text-white border border-gray-200 rounded-lg shadow-md shadow-white;
+  }
+
+  #dropdown .logout {
+    @apply text-red-500;
+  }
+
+  #dropdown .logout, #dropdown .regular-li{
+    @apply flex items-center text-sm hover:bg-zinc-900 p-2;
+  }
+}

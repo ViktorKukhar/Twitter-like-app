@@ -1,6 +1,5 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-
   def show
     @tweet = resource
   end
@@ -40,11 +39,14 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet = Tweet.find(params[:id])
-
-    if @tweet.destroy
-      redirect_to root_path, notice: "Tweet was successfully destroyed.", status: :see_other
+    if @tweet.user_id == current_user.id
+      @tweet.destroy
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.remove(@tweet) }
+        format.html { redirect_to tweets_path, notice: 'Tweet was successfully deleted.' }
+      end
     else
-      redirect_to tweets_path, notice: "There was an issue deleting the tweet."
+      redirect_to tweets_path, alert: 'You are not authorized to delete this tweet.'
     end
   end
 

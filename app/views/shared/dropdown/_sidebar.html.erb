@@ -1,0 +1,16 @@
+<ul id="dropdown" data-sidebar-target="dropdown" class="dropdown hidden">
+
+  <%= link_to users_profile_path(current_user) do %>
+    <li class="regular-li rounded-t-lg flex items-start">
+      <span class="ml-2">Tweets</span>
+    </li>
+  <% end %>
+
+  <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+    <li class="logout rounded-b-lg">
+      <%= inline_svg('logout.svg', class: "h-4") %>
+      <span class="ml-2">Log out</span>
+    </li>
+  <% end %>
+
+</ul>
