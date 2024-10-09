@@ -17,6 +17,7 @@ export default class extends Controller {
 
   clearTextarea() {
     this.textareaTarget.value = "";
+
     this.checkLength();
   }
 

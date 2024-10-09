@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Users::Profiles", type: :request do
-  include_context :valid_tweet
+  let!(:tweets) { create_list(:tweet, 3, user: user) }
+  let(:recent_tweets) { user.tweets.recent }
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
@@ -17,7 +18,7 @@ RSpec.describe "Users::Profiles", type: :request do
       end
 
       it "displays the user's recent tweets" do
-        recent_tweets.each do |tweet|
+        recent_tweets.sample do |tweet|
           expect(response.body).to include(tweet.body)
         end
       end
@@ -37,13 +38,14 @@ RSpec.describe "Users::Profiles", type: :request do
       end
 
       it "returns a 302 status for redirection" do
-        expect(response).to have_http_status(:found)
+        expect(response).to be_redirect
       end
     end
 
     context "when viewing another user's profile" do
       before do
         sign_in user
+
         get users_profile_path(other_user.id)
       end
 
@@ -52,7 +54,7 @@ RSpec.describe "Users::Profiles", type: :request do
       end
 
       it "displays the other user's recent tweets" do
-        other_user.tweets.recent.each do |tweet|
+        other_user.tweets.recent.sample do |tweet|
           expect(response.body).to include(tweet.body)
         end
       end

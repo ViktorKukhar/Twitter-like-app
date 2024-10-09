@@ -1,8 +1,6 @@
 <% flash.each do |type, message| %>
-  <% if message.present? %>
     <div class="flash-position <%= flash_classes(type) %>" role="alert" data-controller="flash">
       <p class="font-bold"><%= type.capitalize %></p>
       <p><%= message %></p>
     </div>
-  <% end %>
 <% end %>

@@ -9,7 +9,7 @@ class TweetsController < ApplicationController
   end
 
   def edit
-    @tweet = Tweet.find(params[:id])
+    @tweet = resource
   end
 
   def create
@@ -28,7 +28,7 @@ class TweetsController < ApplicationController
   end
 
   def update
-    @tweet = Tweet.find(params[:id])
+    @tweet = resource
 
     if @tweet.update(tweet_params)
       redirect_to @tweet, notice: "Tweet was successfully updated.", status: :see_other
@@ -38,7 +38,8 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    @tweet = Tweet.find(params[:id])
+    @tweet = resource
+
     if @tweet.user_id == current_user.id
       @tweet.destroy
       respond_to do |format|

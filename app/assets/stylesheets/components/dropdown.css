@@ -15,7 +15,7 @@
     @apply text-red-500;
   }
 
-  #dropdown .logout, #dropdown .regular-li{
+  #dropdown .logout, #dropdown .regular-li {
     @apply flex items-center text-sm hover:bg-zinc-900 p-2;
   }
 }

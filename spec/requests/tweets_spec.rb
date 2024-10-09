@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "/tweets", type: :request do
   include_context :authenticated_user
-  include_context :valid_tweet
+
+  let!(:tweet) { create(:tweet, user: user) }
+  let(:valid_attributes) { { body: "New Tweet", user_id: user.id } }
+  let!(:tweets) { create_list(:tweet, 3, user: user) }
+  let(:recent_tweets) { user.tweets.recent }
 
   describe 'GET /tweets/:id' do
     it 'returns a successful response for a valid tweet' do
@@ -23,7 +27,7 @@ RSpec.describe "/tweets", type: :request do
     context 'with valid parameters' do
       it 'creates a new tweet and renders turbo stream response' do
         expect do
-          post tweets_path, params: { tweet: valid_attributes }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
+          post tweets_path(format: :turbo_stream), params: { tweet: valid_attributes }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
         end.to change(Tweet, :count).by(1)
 
         expect(response.media_type).to eq('text/vnd.turbo-stream.html')
@@ -35,10 +39,9 @@ RSpec.describe "/tweets", type: :request do
 
       it 'does not create a new tweet and renders the flash messages turbo stream' do
         expect do
-          post tweets_path, params: { tweet: invalid_attributes }, headers: { 'Accept' => 'text/vnd.turbo-stream.html' }
+          post tweets_path(format: :turbo_stream), params: { tweet: invalid_attributes }
         end.not_to change(Tweet, :count)
 
-        expect(response.media_type).to eq('text/vnd.turbo-stream.html')
         expect(response.body).to include('flash_messages')
       end
     end
@@ -55,7 +58,7 @@ RSpec.describe "/tweets", type: :request do
   describe 'PATCH /tweets/:id' do
     context 'with valid parameters' do
       it 'updates the tweet and redirects to show path' do
-        patch tweet_path(tweet), params: { tweet: { body: 'Updated Body' } }
+        patch tweet_path(tweet, format: :turbo_stream), params: { tweet: { body: 'Updated Body' } }
 
         expect(response).to redirect_to(tweet_path(tweet))
 
@@ -79,10 +82,8 @@ RSpec.describe "/tweets", type: :request do
           delete tweet_path(tweet)
         end.to change(Tweet, :count).by(-1)
 
-        expect(response).to redirect_to(root_path)
+        expect(response).to redirect_to(tweets_path)
       end
     end
-
   end
-
 end

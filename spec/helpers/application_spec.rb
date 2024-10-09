@@ -23,7 +23,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe '#page' do
     include_context :authenticated_user
-    include_context :valid_tweet
+
 
     context 'when current_page is root_path' do
       it 'returns "For you" paragraph' do
