@@ -1,0 +1,7 @@
+<% if @tweet.errors.empty? %>
+  <%= turbo_stream.replace dom_id(@tweet) do %>
+    <%= render partial: "tweets/partials/tweet", locals: { tweet: @tweet } %>
+  <% end %>
+<% end %>
+
+<%= turbo_stream.replace("flash_messages", partial: "shared/flash_messages") %>

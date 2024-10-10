@@ -10,6 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body class="bg-black text-gray-200">
+  <%= turbo_frame_tag "modal" %>
     <main class="container mx-auto px-5">
       <%= render "shared/flash_messages" %>
       <div class="flex justify-center">

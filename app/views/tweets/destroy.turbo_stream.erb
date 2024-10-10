@@ -1,5 +1,5 @@
 <% if @tweet.errors.empty? %>
-  <%= turbo_stream.prepend "tweets", partial: "tweets/partials/tweet", locals: { tweet: @tweet } %>
+  <%= turbo_stream.remove(@tweet) %>
 <% end %>
 
 <%= turbo_stream.replace("flash_messages", partial: "shared/flash_messages") %>

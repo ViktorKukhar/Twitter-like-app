@@ -7,7 +7,7 @@
     </li>
   <% end %>
 
-  <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
+  <%= link_to edit_tweet_path(tweet), data: { turbo_frame: "modal", turbo_stream: true } do %>
     <li class="regular-li rounded-b-lg">
       <%= inline_svg('edit.svg', class: "h-4") %>
       <span class="ml-2">Edit</span>

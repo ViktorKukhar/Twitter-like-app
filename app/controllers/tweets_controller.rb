@@ -10,11 +10,18 @@ class TweetsController < ApplicationController
 
   def edit
     @tweet = resource
+
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def create
     @tweet = current_user.tweets.build(tweet_params)
+
     if @tweet.save
+      flash[:notice] = 'Tweet was successfully created.'
+
       respond_to do |format|
         format.turbo_stream
       end
@@ -22,7 +29,7 @@ class TweetsController < ApplicationController
       flash.now[:error] = @tweet.errors.full_messages.join(", ")
 
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("flash_messages", partial: "shared/flash_messages") }
+        format.turbo_stream
       end
     end
   end
@@ -30,10 +37,16 @@ class TweetsController < ApplicationController
   def update
     @tweet = resource
 
-    if @tweet.update(tweet_params)
-      redirect_to @tweet, notice: "Tweet was successfully updated.", status: :see_other
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @tweet.update(tweet_params)
+        flash.now[:notice] = "Tweet was successfully updated."
+
+        format.turbo_stream
+      else
+        flash.now[:error] = @tweet.errors.full_messages.join(", ")
+
+        format.turbo_stream
+      end
     end
   end
 
@@ -41,13 +54,17 @@ class TweetsController < ApplicationController
     @tweet = resource
 
     if @tweet.user_id == current_user.id
+      flash.now[:notice] = "Tweet was successfully destroyed."
+
       @tweet.destroy
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.remove(@tweet) }
-        format.html { redirect_to tweets_path, notice: 'Tweet was successfully deleted.' }
+        format.turbo_stream
       end
     else
-      redirect_to tweets_path, alert: 'You are not authorized to delete this tweet.'
+      flash.now[:error] = @tweet.errors.full_messages.join(", ")
+      respond_to do |format|
+        format.turbo_stream
+      end
     end
   end
 
