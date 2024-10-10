@@ -1,5 +1,5 @@
 <%= render 'tweets/partials/form', tweet: @new_tweet %>
 
 <%= turbo_frame_tag "tweets" do %>
-  <%= render partial: 'tweets/partials/tweet', collection: @tweets %>
+  <%= render partial: 'tweets/tweet', collection: @tweets %>
 <% end %>
