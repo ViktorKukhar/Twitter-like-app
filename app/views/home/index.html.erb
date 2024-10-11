@@ -1,5 +1,6 @@
 <%= render 'tweets/partials/form', tweet: @new_tweet %>
 
-<%= turbo_frame_tag "tweets" do %>
+<%= turbo_stream_from 'tweets' %>
+<div id="tweets">
   <%= render partial: 'tweets/tweet', collection: @tweets %>
-<% end %>
+</div>
