@@ -15,5 +15,4 @@ class Users::ProfilesController < ApplicationController
   def collection
     resource.tweets.recent
   end
-
 end

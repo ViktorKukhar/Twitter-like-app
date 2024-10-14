@@ -1,3 +1,6 @@
+<% content_for :header_title do %>
+  For you
+<% end %>
 <%= render 'tweets/partials/form', tweet: @new_tweet %>
 
 <%= turbo_stream_from 'tweets' %>

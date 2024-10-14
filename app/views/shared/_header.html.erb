@@ -1,4 +1,4 @@
-<header id="header" class="header"><%= page(request.path) %></header>
+<header id="header" class="header"><h2><%= yield(:header_title) || 'Twitter' %></h2></header>
 <div id="flash_messages">
   <%= render 'shared/flash_messages', tweet: @tweet %>
 </div>
