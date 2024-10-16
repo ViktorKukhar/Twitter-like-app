@@ -1,5 +1,5 @@
-<% if @tweet.errors.empty? %>
+<% if @tweet.destroyed? %>
   <%= turbo_stream.remove(@tweet) %>
 <% end %>
 
-<%= turbo_stream.replace("flash_messages", partial: "shared/flash_messages") %>
+<%= turbo_stream.append("flash_messages", partial: "shared/flash_messages") %>

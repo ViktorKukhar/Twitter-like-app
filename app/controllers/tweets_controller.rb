@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_user!, only: [:destroy]
+  before_action :authorize_user!, only: :destroy
+
   def show
     @tweet = resource
   end
@@ -16,21 +17,18 @@ class TweetsController < ApplicationController
       format.turbo_stream
     end
   end
+
   def create
     @tweet = current_user.tweets.build(tweet_params)
 
-    if @tweet.save
-      flash[:notice] = 'Tweet was successfully created.'
-
-      respond_to do |format|
-        format.turbo_stream
+    respond_to do |format|
+      if @tweet.save
+        flash[:notice] = 'Tweet was successfully created.'
+      else
+        flash.now[:error] = @tweet.errors.full_messages.join(", ")
       end
-    else
-      flash.now[:error] = @tweet.errors.full_messages.join(", ")
 
-      respond_to do |format|
-        format.turbo_stream
-      end
+      format.turbo_stream
     end
   end
 
@@ -40,29 +38,25 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if @tweet.update(tweet_params)
         flash.now[:notice] = "Tweet was successfully updated."
-
-        format.turbo_stream
       else
         flash.now[:error] = @tweet.errors.full_messages.join(", ")
-
-        format.turbo_stream
       end
+
+      format.turbo_stream
     end
   end
 
   def destroy
     @tweet = resource
 
-    if @tweet.destroy
-      flash.now[:notice] = "Tweet was successfully destroyed."
-      respond_to do |format|
-        format.turbo_stream
+    respond_to do |format|
+      if @tweet.destroy
+        flash.now[:notice] = "Tweet was successfully destroyed."
+      else
+        flash.now[:error] = @tweet.errors.full_messages.join(", ")
       end
-    else
-      flash.now[:error] = @tweet.errors.full_messages.join(", ")
-      respond_to do |format|
-        format.turbo_stream
-      end
+
+      format.turbo_stream
     end
   end
 
@@ -82,6 +76,5 @@ class TweetsController < ApplicationController
 
   def authorize_user!
     @tweet = current_user.tweets.find(params[:id])
-    @tweet.user_id == current_user.id
   end
 end

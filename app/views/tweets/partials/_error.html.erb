@@ -1,9 +1,8 @@
-<% if tweet&.errors&.any? %>
-  <div id="tweet_error" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-    <ul>
-      <% tweet.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div id="tweet_error" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+  <ul>
+    <% tweet.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+

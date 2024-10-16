@@ -1,6 +1,5 @@
-<div id="flash_messages">
-  <%= render 'shared/flash_messages', tweet: @tweet %>
-</div>
+<%= render 'shared/flash_messages', tweet: @tweet %>
+
 <%= form_with(model: tweet, class: "contents", data: { controller: "tweet", action: "turbo:submit-end->tweet#clearTextarea input->tweet#resize input->tweet#checkLength", local: false }) do |form| %>
   <div class="p-4 tweet-border">
     <%= form.text_area :body, data: { tweet_target: "textarea" }, class: "tweet-textarea", rows: "1", placeholder: "Hello, #{ user_signed_in? ? current_user.username : "Stranger" }. What's happening?" %>
