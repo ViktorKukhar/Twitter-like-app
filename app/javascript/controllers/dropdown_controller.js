@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="dropdown"
 export default class extends Controller {
   static targets = ["dropdown"]
+  static classes = ["hidden"]
 
   connect() {
     document.addEventListener('click', this.clickOutside.bind(this))
@@ -13,11 +14,12 @@ export default class extends Controller {
   }
 
   toggle() {
-    this.dropdownTarget.classList.toggle("hidden")
+    console.log(this.hiddenClass)
+    this.dropdownTarget.classList.toggle(this.hiddenClass)
   }
 
   close() {
-    this.dropdownTarget.classList.add("hidden")
+    this.dropdownTarget.classList.add(this.hiddenClass)
   }
 
   clickOutside(event) {

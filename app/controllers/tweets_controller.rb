@@ -67,7 +67,7 @@ class TweetsController < ApplicationController
   end
 
   def collection
-    Tweet.recent
+    Tweet.includes(:user).recent
   end
 
   def resource

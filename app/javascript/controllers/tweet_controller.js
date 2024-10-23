@@ -45,6 +45,5 @@ export default class extends Controller {
     } else {
       this.submitTarget.classList.remove("opacity-50");
     }
-
   }
 }

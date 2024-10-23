@@ -1,12 +1,9 @@
-<div id="<%= dom_id(tweet) %>" class="tweet-main-div flex items-start w-full relative" data-controller="dropdown">
+<div id="<%= dom_id(tweet) %>" class="tweet-main-div flex items-start w-full relative" data-controller="dropdown" data-dropdown-hidden-class="hidden">
   <%= link_to users_profile_path(tweet.user_id), data: { turbo: false } do %>
-    <div>
       <%= inline_svg('user.svg', class: "h-11") %>
-    </div>
   <% end %>
 
   <div id="tweet" class="ml-2 flex-grow">
-
       <div class="flex justify-between w-full">
         <div class="flex items-center mb-1">
           <span class="text-gray-500 text-sm">@<%= tweet.user.username %> · <%= time_ago_in_words(tweet.created_at) %> </span>
@@ -20,9 +17,7 @@
       </div>
 
     <%= link_to tweet_path(tweet), data: { turbo: false } do %>
-      <div>
         <p class="tweet-body"><%= tweet.body %></p>
-      </div>
     <% end %>
 
     <div class="second-text flex justify-between mt-4">
