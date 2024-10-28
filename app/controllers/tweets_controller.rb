@@ -13,9 +13,7 @@ class TweetsController < ApplicationController
   def edit
     @tweet = resource
 
-    respond_to do |format|
-      format.turbo_stream
-    end
+    respond_to :turbo_stream
   end
 
   def create
